@@ -1,6 +1,6 @@
 package FunctionsUntil;
 
-public class CustomMath {
+public class customMath {
     /**
      * Finds the value of a number to the power of another number
      * @param num Inital Number

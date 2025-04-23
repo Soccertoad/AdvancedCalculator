@@ -1,5 +1,5 @@
 package FunctionsUntil;
-import FunctionsUntil.CustomMath;
+import FunctionsUntil.customMath;
 
 public class geometry {
 
@@ -22,21 +22,21 @@ public class triangle{
         switch(missingValue){
             case "a":
                 //c squared - b squared
-                a = CustomMath.pow(c, 2)- CustomMath.pow(b, 2);
+                a = customMath.pow(c, 2)- customMath.pow(b, 2);
                 //square root of a
-                a = CustomMath.customSqrt(a);
+                a = customMath.customSqrt(a);
             break;
             case "b":
                 //c squared - a squared
-                b = CustomMath.pow(c, 2)- CustomMath.pow(a, 2);
+                b = customMath.pow(c, 2)- customMath.pow(a, 2);
                 //square root of b
-                b = CustomMath.customSqrt(b);
+                b = customMath.customSqrt(b);
             break;
             case "c":
                 //a squared + b squared
-                c = CustomMath.pow(a, 2) + CustomMath.pow(b, 2);
+                c = customMath.pow(a, 2) + customMath.pow(b, 2);
                 //square root of c
-                c = CustomMath.customSqrt(c);
+                c = customMath.customSqrt(c);
             break;
         }
 
