@@ -1,4 +1,6 @@
 package FunctionsUntil;
+import java.util.Scanner;
+
 import FunctionsUntil.customMath;
 
 public class geometry {
@@ -14,25 +16,43 @@ public class triangle{
      * @param missingValue The side the user want to find
      * @return The list containing the values of each sides value
      */
-    public static double[] pythagoreanTheorem(double[] values, String missingValue){
+    public static double[] pythagoreanTheorem(Scanner input){
+        double[] values = new double[3];
+        String unknownSide;
         double a, b, c;
+
+        System.out.println("\nWhat Side is unknown? [a, b, or c]");
+        unknownSide = input.nextLine();
+        
         a = values[0];
         b = values[1];
         c = values[2];
-        switch(missingValue){
+        switch(unknownSide){
             case "a":
+                System.out.println("What is the b value?");
+                b = input.nextDouble();
+                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
+                c = input.nextDouble();
                 //c squared - b squared
                 a = customMath.pow(c, 2)- customMath.pow(b, 2);
                 //square root of a
                 a = customMath.customSqrt(a);
             break;
             case "b":
+                System.out.println("What is the a value?");
+                a = input.nextDouble();
+                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
+                c = input.nextDouble(); 
                 //c squared - a squared
                 b = customMath.pow(c, 2)- customMath.pow(a, 2);
                 //square root of b
                 b = customMath.customSqrt(b);
             break;
             case "c":
+                System.out.println("What is the a value?");
+                a = input.nextDouble();
+                System.out.println("What is the b value?");
+                b = input.nextDouble();
                 //a squared + b squared
                 c = customMath.pow(a, 2) + customMath.pow(b, 2);
                 //square root of c
