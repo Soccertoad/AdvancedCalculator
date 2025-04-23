@@ -10,11 +10,14 @@ public class customMath {
     public static double pow(double num, double powerOf){
         double poweredNum = num;
 
-        for (int i = 0; i <= abVal(powerOf); i++){
+        for (int i = 1; i < abVal(powerOf); i++){
             poweredNum *= num;
         }
-        if(powerOf < 0) return 1/poweredNum;
+        if(powerOf < 0){ 
+            return 1/poweredNum;
+        } else {
         return poweredNum;
+        }
     }
 
     /**
@@ -24,9 +27,13 @@ public class customMath {
      */
     public static double abVal(double initNum){
         //If the number is negative inverse the number
-        if (initNum<0) return initNum*-1;
+        if (initNum<0){
+            return initNum*-1;
+        }
         //returns same value otherwise
-        else return initNum;
+        else{ 
+            return initNum;
+        }
     }
 
     //  Used AI for assitance in the creation of the custom square root function
