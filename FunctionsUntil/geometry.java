@@ -17,11 +17,13 @@ public class triangle{
      * @return The list containing the values of each sides value
      */
     public static double[] pythagoreanTheorem(Scanner input){
+        System.out.println("Pythagorean Theorem: ");
+        
         double[] values = new double[3];
         String unknownSide;
         double a, b, c;
 
-        System.out.println("\nWhat Side is unknown? [a, b, or c]");
+        System.out.println("What Side is unknown? [a, b, or c]");
         unknownSide = input.nextLine();
         
         a = values[0];
