@@ -2,16 +2,70 @@ package FunctionsUntil;
 
 public class customMath {
     /**
-     * Finds the value of a number to the power of another number
-     * @param num Inital Number
-     * @param exponent The power of the number
-     * @return Value of the inital number to the power of inputed number
+     * Adds the addends
+     * @param addends The numbers being added
+     * @return The sum of the numbers
      */
-    public static double pow(double num, double exponent){
-        double poweredNum = num;
-
+    public static double addition(double... addends){
+        double sum = 0;
+        for (double i : addends){
+            sum += i;
+        }
+        return sum;
+    }
+    /**
+     * Subtracts the subtrahends (second and folllowing numbers) from the minuend (Starting number)
+     * @param difference The number being subtracted from
+     * @param subtrahends The numbers subracting
+     * @return The difference of the numbers
+     */
+    public static double subtraction(double difference, double... subtrahends){
+        for (double i : subtrahends){
+            difference -= i;
+        }
+        return difference;
+    }
+    /**
+     * Multiplies the factors
+     * @param factors The numbers being multiplied
+     * @return The product of the numbers
+     */
+    public static double multiplication(double... factors){
+        double product = 1;
+        for (double i : factors){
+            product*=i;
+        }
+        return product;
+    }
+    /**
+     * Divides the divisors (second and following numbers) from the quotent
+     * @param quotient
+     * @param divisors
+     * @return
+     */
+    public static double division(double quotient, double... divisors){
+        for (double i : divisors){
+            try{
+                if (i==0){
+                    throw new ArithmeticException("/ by 0");
+                }
+                quotient /= i;
+            } catch (ArithmeticException e){
+                System.out.println("Skipped Value: Divide by 0 error");
+            }
+        }
+        return quotient;
+    }
+    /**
+     * Finds the value of a number to the given power
+     * @param base The number being multiplied
+     * @param exponent The power of the number/number of times the number is multiplied by it's self
+     * @return The value of the base to the exponent power
+     */
+    public static double pow(double base, double exponent){
+        double poweredNum = base;
         for (int i = 1; i < abVal(exponent); i++){
-            poweredNum *= num;
+            poweredNum *= base;
         }
         if(exponent < 0){ 
             return 1/poweredNum;
@@ -19,7 +73,6 @@ public class customMath {
         return poweredNum;
         }
     }
-
     /**
      * Finds the absolute value of the given number:
      * @param initNum Intial Number
@@ -37,8 +90,9 @@ public class customMath {
     }
 
     //  Used AI for assitance in the creation of the custom square root and rounding functions
-     // Custom rounding function (nearest whole number)
-     public static long roundWholeNum(double value) {
+
+    // Custom rounding function (nearest whole number)
+    public static long roundWholeNum(double value) {
         if (value >= 0) {
             return (long)(value + 0.5);
         } else {
@@ -46,26 +100,26 @@ public class customMath {
         }
     }
     /**
-     * @param squareNum the squared inputed number
+     * @param radicand The number being rooted
      * @param tolerance accuraccy of number
      * @return square root of inputed number
      */
-    public static double customSqrt(double squareNum, double tolerance) {
+    public static double customSqrt(double radicand, double tolerance) {
         // Checks if number is negative
-        if (squareNum < 0) {
+        if (radicand < 0) {
             throw new IllegalArgumentException("Cannot compute square root of negative number");
         }
-        if (squareNum == 0 || squareNum == 1) {
-            return squareNum;
+        if (radicand == 0 || radicand == 1) {
+            return radicand;
         }
 
-        double guess = squareNum;
-        while (abVal(guess * guess - squareNum) > tolerance) {
-            guess = (guess + squareNum / guess) / 2.0;
+        double guess = radicand;
+        while (abVal(guess * guess - radicand) > tolerance) {
+            guess = (guess + radicand / guess) / 2.0;
         }
 
         long nearestWhole = roundWholeNum(guess);
-        if (abVal(nearestWhole * nearestWhole - squareNum) <= tolerance) {
+        if (abVal(nearestWhole * nearestWhole - radicand) <= tolerance) {
             return nearestWhole;  // Perfect square root
         }
 
@@ -74,21 +128,21 @@ public class customMath {
         return scaledGuess / 1e10;
         }
     
-    public static double customSqrt(double squareNum){
+    public static double customSqrt(double radicand){
         double tolerance = 1e-12;
         // Checks if number is negative
-        if (squareNum < 0) {
+        if (radicand < 0) {
             throw new IllegalArgumentException("Cannot compute square root of negative number");
         }
-        if (squareNum == 0 || squareNum == 1) {
-            return squareNum;
+        if (radicand == 0 || radicand == 1) {
+            return radicand;
         }
-        double guess = squareNum;
-        while (abVal(guess * guess - squareNum) > tolerance) {
-            guess = (guess + squareNum / guess) / 2.0;
+        double guess = radicand;
+        while (abVal(guess * guess - radicand) > tolerance) {
+            guess = (guess + radicand / guess) / 2.0;
         }
         long nearestWhole = roundWholeNum(guess);
-        if (abVal(nearestWhole * nearestWhole - squareNum) <= tolerance) {
+        if (abVal(nearestWhole * nearestWhole - radicand) <= tolerance) {
             return nearestWhole;  // Perfect square root
         }
 
