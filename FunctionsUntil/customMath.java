@@ -14,9 +14,9 @@ public class customMath {
         return sum;
     }
     /**
-     * Subtracts the subtrahends (second and folllowing numbers) from the minuend (Starting number)
+     * Subtracts the subtrahends (second and following numbers) from the minuend (Starting number)
      * @param difference The number being subtracted from
-     * @param subtrahends The numbers subracting
+     * @param subtrahends The numbers subtracting
      * @return The difference of the numbers
      */
     public static double subtraction(double difference, double... subtrahends){
@@ -38,21 +38,18 @@ public class customMath {
         return product;
     }
     /**
-     * Divides the divisors (second and following numbers) from the quotent
+     * Divides the divisors (second and following numbers) from the quotient
      * @param quotient
      * @param divisors
      * @return
      */
     public static double division(double quotient, double... divisors){
         for (double i : divisors){
-            try{
                 if (i==0){
-                    throw new ArithmeticException("/ by 0");
+                    System.out.println("Skipped Value: Divide by 0 error");
+                    continue;
                 }
                 quotient /= i;
-            } catch (ArithmeticException e){
-                System.out.println("Skipped Value: Divide by 0 error");
-            }
         }
         return quotient;
     }
@@ -68,32 +65,34 @@ public class customMath {
     /**
      * Finds the value of a number to the given power
      * @param base The number being multiplied
-     * @param exponent The power of the number/number of times the number is multiplied by it's self
+     * @param exponent The power of the number/number of times the number is multiplied by itself
      * @return The value of the base to the exponent power
      */
     public static double pow(double base, double exponent){
-        double poweredNum = base;
-        for (int i = 1; i < abVal(exponent); i++){
+        double poweredNum = 1;
+        if(exponent==0) {
+            return 1;
+        }
+        for (int i = 0; i < absoluteValue(exponent); i++){
             poweredNum *= base;
         }
-        if(exponent < 0){ 
-            return 1/poweredNum;
-        } else {
-        return poweredNum;
+        if(exponent < 0) {
+            return 1/poweredNum; 
+        }else {
+            return poweredNum;
         }
     }
     /**
      * Finds the absolute value of the given number:
      * @param initNum Intial Number
-     * @return Absolute number of inputed value
+     * @return Absolute number of inputted value
      */
-    public static double abVal(double initNum){
+    public static double absoluteValue(double initNum){
         //If the number is negative inverse the number
-        if (initNum<0){
+        if (initNum<0) {
             return -initNum;
-        }
         //returns same value otherwise
-        else{ 
+        } else {
             return initNum;
         }
     }
@@ -104,14 +103,14 @@ public class customMath {
     public static long roundWholeNum(double value) {
         if (value >= 0) {
             return (long)(value + 0.5);
-        } else {
+        }else{
             return (long)(value - 0.5);
         }
     }
     /**
      * @param radicand The number being rooted
-     * @param tolerance accuraccy of number
-     * @return square root of inputed number
+     * @param tolerance accuracy of number
+     * @return square root of inputted number
      */
     public static double customSqrt(double radicand, double tolerance) {
         // Checks if number is negative
@@ -123,12 +122,12 @@ public class customMath {
         }
 
         double guess = radicand;
-        while (abVal(guess * guess - radicand) > tolerance) {
+        while (absoluteValue(guess * guess - radicand) > tolerance) {
             guess = (guess + radicand / guess) / 2.0;
         }
 
         long nearestWhole = roundWholeNum(guess);
-        if (abVal(nearestWhole * nearestWhole - radicand) <= tolerance) {
+        if (absoluteValue(nearestWhole * nearestWhole - radicand) <= tolerance) {
             return nearestWhole;  // Perfect square root
         }
 
@@ -139,24 +138,6 @@ public class customMath {
     
     public static double customSqrt(double radicand){
         double tolerance = 1e-12;
-        // Checks if number is negative
-        if (radicand < 0) {
-            throw new IllegalArgumentException("Cannot compute square root of negative number");
-        }
-        if (radicand == 0 || radicand == 1) {
-            return radicand;
-        }
-        double guess = radicand;
-        while (abVal(guess * guess - radicand) > tolerance) {
-            guess = (guess + radicand / guess) / 2.0;
-        }
-        long nearestWhole = roundWholeNum(guess);
-        if (abVal(nearestWhole * nearestWhole - radicand) <= tolerance) {
-            return nearestWhole;  // Perfect square root
-        }
-
-        // Manually trim to 10 decimal places (custom tolerance rounding)
-        long scaledGuess = (long)(guess * 1e10);
-        return scaledGuess / 1e10;
+        return customSqrt(radicand, tolerance);
     }
 }
