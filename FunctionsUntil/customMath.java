@@ -56,6 +56,15 @@ public class customMath {
         }
         return quotient;
     }
+    public static long factorial(int base){
+        if(base<0){
+            throw new IllegalArgumentException("Not defined for negative factorial");
+        } 
+        if (base == 0 || base == 1){
+            return 1;
+        }
+        return base * factorial(base - 1);
+    }
     /**
      * Finds the value of a number to the given power
      * @param base The number being multiplied
