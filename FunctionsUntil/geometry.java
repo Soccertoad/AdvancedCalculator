@@ -1,11 +1,11 @@
 package FunctionsUntil;
 import java.util.Scanner;
 
-import FunctionsUntil.customMath;
+import FunctionsUntil.CustomMath;
 
-public class geometry {
+public class Geometry {
 
-public class triangle{
+public class Triangle{
 
     public static double triangleArea(double length, double width){
         return (length * width)/2;
@@ -36,9 +36,9 @@ public class triangle{
                 System.out.println("What is the c value? (Longest Side/Hypothenuse)");
                 c = input.nextDouble();
                 //c squared - b squared
-                a = customMath.pow(c, 2)- customMath.pow(b, 2);
+                a = CustomMath.pow(c, 2)- CustomMath.pow(b, 2);
                 //square root of a
-                a = customMath.customSqrt(a);
+                a = CustomMath.customSqrt(a);
             break;
             case "b":
                 System.out.println("What is the a value?");
@@ -46,9 +46,9 @@ public class triangle{
                 System.out.println("What is the c value? (Longest Side/Hypothenuse)");
                 c = input.nextDouble(); 
                 //c squared - a squared
-                b = customMath.pow(c, 2)- customMath.pow(a, 2);
+                b = CustomMath.pow(c, 2)- CustomMath.pow(a, 2);
                 //square root of b
-                b = customMath.customSqrt(b);
+                b = CustomMath.customSqrt(b);
             break;
             case "c":
                 System.out.println("What is the a value?");
@@ -56,9 +56,9 @@ public class triangle{
                 System.out.println("What is the b value?");
                 b = input.nextDouble();
                 //a squared + b squared
-                c = customMath.pow(a, 2) + customMath.pow(b, 2);
+                c = CustomMath.pow(a, 2) + CustomMath.pow(b, 2);
                 //square root of c
-                c = customMath.customSqrt(c);
+                c = CustomMath.customSqrt(c);
             break;
         }
 

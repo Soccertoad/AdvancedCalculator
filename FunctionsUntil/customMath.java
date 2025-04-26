@@ -1,6 +1,6 @@
 package FunctionsUntil;
 
-public class customMath {
+public class CustomMath {
     /**
      * Adds the addends
      * @param addends The numbers being added
