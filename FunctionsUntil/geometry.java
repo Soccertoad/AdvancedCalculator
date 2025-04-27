@@ -7,7 +7,7 @@ public class Geometry {
          * Find the area of a triangle
          * @param base The base of the triangle
          * @param height The height of the triangle
-         * @return The area of the trianglle
+         * @return The area of the triangle
          */
         public static double triangleArea(double base, double height){
             return (base * height)/2;
@@ -43,7 +43,20 @@ public class Geometry {
             return sides;
         }
     }
-
+    /**
+     * Finds the Area of a triangle
+     * @param input Scanner to get user input
+     * @return The Area of the triangle
+     */
+    public static double triangleArea(Scanner input){
+        System.out.println("Triangle Area");
+        double base, height;
+        System.out.println("What is the length of the base?");
+        base = DataManagement.validDoubleInput(input);
+        System.out.println("What is the length of the height?");
+        height = DataManagement.validDoubleInput(input);
+        return GeometryMath.triangleArea(base, height);
+    }
     /**
      * Uses Pythagorean Theorem to find the values of each side of a triangle
      * @param input The scanner for user input
@@ -56,7 +69,17 @@ public class Geometry {
         char unknownSide;
 
         System.out.println("What Side is unknown? [a, b, or c]");
-        unknownSide = DataChecking.validCharInput(input, "");
+        while(true){
+            try {
+                unknownSide = DataManagement.validCharInput(input, "[a, b, or c]");
+                if(unknownSide != 'a' && unknownSide != 'b' && unknownSide != 'c'){
+                    throw new IllegalArgumentException("Invalid Data");
+                }
+                break;
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+        }
         
         switch(unknownSide){
             case 'a' -> {

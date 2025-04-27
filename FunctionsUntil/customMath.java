@@ -39,9 +39,9 @@ public class CustomMath {
     }
     /**
      * Divides the divisors (second and following numbers) from the quotient
-     * @param quotient
-     * @param divisors
-     * @return
+     * @param quotient The number being divided
+     * @param divisors The numbers dividing
+     * @return The quotient of the equation
      */
     public static double division(double quotient, double... divisors){
         for (double i : divisors){
@@ -84,7 +84,7 @@ public class CustomMath {
     }
     /**
      * Finds the absolute value of the given number:
-     * @param initNum Intial Number
+     * @param initNum Initial Number
      * @return Absolute number of inputted value
      */
     public static double absoluteValue(double initNum){
