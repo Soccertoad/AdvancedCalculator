@@ -1,14 +1,7 @@
 package Calculator.FunctionsUntil;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class DataManagement {
-    /**
-     * Gets double value from user
-     * @param input Scanner for user input
-     * @return A double value inputed from the user
-     */
     public static double validDoubleInput(Scanner input){
     while(true){
         try {
@@ -19,12 +12,6 @@ public class DataManagement {
         }
     }
 }
-/**
- * Gets char input from user
- * @param input Scanner for user input
- * @param validDataOptions Finish "Please enter " provide the wanted data
- * @return A char value inputed from the user
- */
 public static char validCharInput(Scanner input, String validDataOptions){
     while(true){
         try {
