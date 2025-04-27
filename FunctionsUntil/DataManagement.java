@@ -35,6 +35,16 @@ public static char validCharInput(Scanner input, String validDataOptions){
         }
     }
 }
+public static int validIntegerInput(Scanner input){
+    while(true){
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid data entry: Please enter a number");
+            input.next();
+        }
+    }
+}
 public static void print(double[] printArray){
     for(int i=0; i<printArray.length; i++){
         System.out.println(printArray[i]);

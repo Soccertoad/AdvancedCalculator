@@ -70,17 +70,19 @@ public class CustomMath {
      */
     public static double pow(double base, double exponent){
         double poweredNum = 1;
+
         if(exponent==0) {
             return 1;
-        }
+        } 
+
         for (int i = 0; i < absoluteValue(exponent); i++){
             poweredNum *= base;
         }
-        if(exponent < 0) {
-            return 1/poweredNum; 
-        }else {
-            return poweredNum;
+        if(exponent<0){
+            poweredNum = 1 / poweredNum;
         }
+        return poweredNum;
+
     }
     /**
      * Finds the absolute value of the given number:
