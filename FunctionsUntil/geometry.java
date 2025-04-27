@@ -38,7 +38,7 @@ public class Geometry {
                         CustomMath.pow(sides[0], 2) + CustomMath.pow(sides[1], 2)
                     );
                 }
-                
+                default -> System.out.println("Invalid Input");
             }
             return sides;
         }
@@ -56,15 +56,7 @@ public class Geometry {
         char unknownSide;
 
         System.out.println("What Side is unknown? [a, b, or c]");
-        try {
-            unknownSide = input.next().toLowerCase().strip().charAt(0); 
-            if(unknownSide != 'a' || unknownSide != 'b' || unknownSide != 'c'){
-                throw new IllegalArgumentException("Invalid data entry");
-            }  
-        } catch (IllegalArgumentException e) {
-            System.out.println("Must enter a, b, or c");
-            unknownSide = input.next().toLowerCase().strip().charAt(0);
-        }
+        unknownSide = DataChecking.validCharInput(input, "");
         
         switch(unknownSide){
             case 'a' -> {
