@@ -1,73 +1,93 @@
 package FunctionsUntil;
 import java.util.Scanner;
 
-import FunctionsUntil.CustomMath;
-
 public class Geometry {
-
-public class Triangle{
-
-    public static double triangleArea(double length, double width){
-        return (length * width)/2;
+    public class GeometryMath{
+        /**
+         * Find the area of a triangle
+         * @param base The base of the triangle
+         * @param height The height of the triangle
+         * @return The area of the trianglle
+         */
+        public static double triangleArea(double base, double height){
+            return (base * height)/2;
+        }
+        /**
+         * Finds the value of the unknown side using Pythagorean Theorem
+         * @param unknown The unknown triangle side
+         * @param sides array of side lengths [a, b, c]
+         * @return The unknown side length
+         */
+        public static double[] pythagoreanTheorem(char unknown, double[] sides){
+            switch(unknown){
+                case 'a' -> {
+                    // Square Root of c squared - b squared
+                    sides[0] = CustomMath.customSqrt(
+                        CustomMath.pow(sides[2], 2) - CustomMath.pow(sides[1], 2)
+                    );
+                } 
+                case 'b' -> {
+                    // Square Root of c squared - a squared
+                    sides[1] = CustomMath.customSqrt(
+                        CustomMath.pow(sides[2], 2) - CustomMath.pow(sides[0], 2)
+                    );
+                }
+                case 'c' -> {
+                    // Square Root of a squared + b squared
+                    sides[2] = CustomMath.customSqrt(
+                        CustomMath.pow(sides[0], 2) + CustomMath.pow(sides[1], 2)
+                    );
+                }
+                
+            }
+            return sides;
+        }
     }
+
     /**
      * Uses Pythagorean Theorem to find the values of each side of a triangle
-     * @param values Value of each side mapped to an index in assending order
-     * @param missingValue The side the user want to find
-     * @return The list containing the values of each sides value
+     * @param input The scanner for user input
+     * @return An array containing each side length
      */
     public static double[] pythagoreanTheorem(Scanner input){
         System.out.println("Pythagorean Theorem: ");
         
-        double[] values = new double[3];
-        String unknownSide;
-        double a, b, c;
+        double[] sides = new double[3];
+        char unknownSide;
 
         System.out.println("What Side is unknown? [a, b, or c]");
-        unknownSide = input.nextLine();
-        
-        a = values[0];
-        b = values[1];
-        c = values[2];
-        switch(unknownSide){
-            case "a":
-                System.out.println("What is the b value?");
-                b = input.nextDouble();
-                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
-                c = input.nextDouble();
-                //c squared - b squared
-                a = CustomMath.pow(c, 2)- CustomMath.pow(b, 2);
-                //square root of a
-                a = CustomMath.customSqrt(a);
-            break;
-            case "b":
-                System.out.println("What is the a value?");
-                a = input.nextDouble();
-                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
-                c = input.nextDouble(); 
-                //c squared - a squared
-                b = CustomMath.pow(c, 2)- CustomMath.pow(a, 2);
-                //square root of b
-                b = CustomMath.customSqrt(b);
-            break;
-            case "c":
-                System.out.println("What is the a value?");
-                a = input.nextDouble();
-                System.out.println("What is the b value?");
-                b = input.nextDouble();
-                //a squared + b squared
-                c = CustomMath.pow(a, 2) + CustomMath.pow(b, 2);
-                //square root of c
-                c = CustomMath.customSqrt(c);
-            break;
+        try {
+            unknownSide = input.next().toLowerCase().strip().charAt(0); 
+            if(unknownSide != 'a' || unknownSide != 'b' || unknownSide != 'c'){
+                throw new IllegalArgumentException("Invalid data entry");
+            }  
+        } catch (IllegalArgumentException e) {
+            System.out.println("Must enter a, b, or c");
+            unknownSide = input.next().toLowerCase().strip().charAt(0);
         }
+        
+        switch(unknownSide){
+            case 'a' -> {
+                System.out.println("What is the b value?");
+                sides[1] = input.nextDouble();
+                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
+                sides[2] = input.nextDouble();
+            }
+            case 'b' ->{
+                System.out.println("What is the a value?");
+                sides[0] = input.nextDouble();
+                System.out.println("What is the c value? (Longest Side/Hypothenuse)");
+                sides[2] = input.nextDouble(); 
 
-        values[0] = a;
-        values[1] = b;
-        values[2] = c;
-
-        return values;
+            }
+            case 'c' -> {
+                System.out.println("What is the a value?");
+                sides[0] = input.nextDouble();
+                System.out.println("What is the b value?");
+                sides[1] = input.nextDouble();
+            }
+        }
+        sides = GeometryMath.pythagoreanTheorem(unknownSide, sides);
+        return sides;
     }
-}
-
 }
