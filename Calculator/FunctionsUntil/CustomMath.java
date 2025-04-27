@@ -1,4 +1,4 @@
-package FunctionsUntil;
+package Calculator.FunctionsUntil;
 
 public class CustomMath {
     /**

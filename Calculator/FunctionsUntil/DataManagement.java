@@ -1,4 +1,4 @@
-package FunctionsUntil;
+package Calculator.FunctionsUntil;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
